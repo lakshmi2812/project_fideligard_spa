@@ -1,14 +1,14 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
 import {
   GET_STOCKS_REQUEST,
   GET_STOCKS_SUCCESS,
   GET_STOCKS_FAILURE
-} from './actions';
+} from "./actions";
 
 const initialState = {
   user: {
-    name: 'User1',
+    name: "User1",
     portfolio: [],
     transactions: [],
     funds: 100000

@@ -1,6 +1,8 @@
-export const GET_STOCKS_REQUEST = 'GET_STOCKS_REQUEST';
-export const GET_STOCKS_SUCCESS = 'GET_STOCKS_SUCCESS';
-export const GET_STOCKS_FAILURE = 'GET_STOCKS_FAILURE';
+export const GET_STOCKS_REQUEST = "GET_STOCKS_REQUEST";
+export const GET_STOCKS_SUCCESS = "GET_STOCKS_SUCCESS";
+export const GET_STOCKS_FAILURE = "GET_STOCKS_FAILURE";
+require("dotenv").config();
+const API_KEY = process.env.QUANDL_API_KEY;
 
 export function getStocksRequest() {
   return {
@@ -30,12 +32,12 @@ export function getStocks() {
     dispatch(getStocksRequest());
 
     //let { search, type } = formData;
-    let stockArray = ['AAPL', 'BA', 'IBM', 'INTC', 'MSFT'];
+    let stockArray = ["AAPL", "BA", "IBM", "INTC", "MSFT"];
     for (let i = 0; i < stockArray.length; i++) {
       fetch(
         `https://www.quandl.com/api/v3/datasets/EOD/${
           stockArray[i]
-        }.json?api_key=${API_KEY}&start_date=2016-01-01&end_date=2016-12-31`
+        }.json?api_key=Ker6SsX6Mn79xiRobmxu&start_date=2016-01-01&end_date=2016-12-31`
       )
         .then(response => {
           // If response not okay, throw an error

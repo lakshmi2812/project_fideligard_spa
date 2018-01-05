@@ -1,13 +1,13 @@
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import { connect } from "react-redux";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
   Switch
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { getStocks } from '../actions';
+import { getStocks } from "../actions";
 
 class PageContainer extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class PageContainer extends Component {
   render() {
     return (
       <div>
+        <input type="date" />
         <p>Hi!</p>
       </div>
     );
