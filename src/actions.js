@@ -1,35 +1,39 @@
-export const GET_BOOKS_REQUEST = 'GET_BOOKS_REQUEST';
-export const GET_BOOKS_SUCCESS = 'GET_BOOKS_SUCCESS';
-export const GET_BOOKS_FAILURE = 'GET_BOOKS_FAILURE';
+export const GET_STOCKS_REQUEST = "GET_STOCKS_REQUEST";
+export const GET_STOCKS_SUCCESS = "GET_STOCKS_SUCCESS";
+export const GET_STOCKS_FAILURE = "GET_STOCKS_FAILURE";
 
-export function getBooksRequest() {
+export function getStocksRequest() {
   return {
-    type: GET_BOOKS_REQUEST
+    type: GET_STOCKS_REQUEST
   };
 }
 
-export function getBooksSuccess(data) {
+export function getStocksSuccess(data) {
   return {
-    type: GET_BOOKS_SUCCESS,
+    type: GET_STOCKS_SUCCESS,
     data
   };
 }
 
-export function getBooksFailure(error) {
+export function getStocksFailure(error) {
   return {
-    type: GET_BOOKS_FAILURE,
+    type: GET_STOCKS_FAILURE,
     error
   };
 }
 
-export function getBooks(formData) {
+//thunk action creator
+//thunk is used to make asynchronous api calls in redux
+export function getStocks() {
   return dispatch => {
     // Update the state so that it knows the request has begun
-    dispatch(getBooksRequest());
+    dispatch(getStocksRequest());
 
-    let { search, type } = formData;
+    //let { search, type } = formData;
 
-    fetch(`/api/books?keyword=${search}&type=${type}`)
+    fetch(
+      `https://www.quandl.com/api/v3/datasets/EOD/AAPL.json?api_key=FDLnts4GDctkhE1Picux&start_date=2016-01-01&end_date=2016-12-31`
+    )
       .then(response => {
         // If response not okay, throw an error
         if (!response.ok) {
@@ -41,11 +45,11 @@ export function getBooks(formData) {
       .then(json => {
         // Dispatch success which sets the Books.
         console.log(json);
-        dispatch(getBooksSuccess(json));
+        //dispatch(getStocksSuccess(json));
       })
       .catch(error => {
         // Dispatch failure which sets the error in state
-        dispatch(getBooksFailure(error));
+        dispatch(getStocksFailure(error));
       });
   };
 }
