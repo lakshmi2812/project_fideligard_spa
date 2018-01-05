@@ -1,6 +1,6 @@
-export const GET_STOCKS_REQUEST = 'GET_STOCKS_REQUEST';
-export const GET_STOCKS_SUCCESS = 'GET_STOCKS_SUCCESS';
-export const GET_STOCKS_FAILURE = 'GET_STOCKS_FAILURE';
+export const GET_STOCKS_REQUEST = "GET_STOCKS_REQUEST";
+export const GET_STOCKS_SUCCESS = "GET_STOCKS_SUCCESS";
+export const GET_STOCKS_FAILURE = "GET_STOCKS_FAILURE";
 
 export function getStocksRequest() {
   return {
@@ -30,7 +30,7 @@ export function getStocks() {
     dispatch(getStocksRequest());
 
     //let { search, type } = formData;
-    let stockArray = ['AAPL', 'BA', 'IBM', 'INTC', 'MSFT'];
+    let stockArray = ["AAPL", "BA", "IBM", "INTC", "MSFT"];
     for (let i = 0; i < stockArray.length; i++) {
       fetch(
         `https://www.quandl.com/api/v3/datasets/EOD/${

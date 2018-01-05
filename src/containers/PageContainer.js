@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
-import React, { Component } from 'react';
-import Components from '../components/ExportComponents';
+import { connect } from "react-redux";
+import React, { Component } from "react";
+import Components from "../components/ExportComponents";
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
   Switch
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { getStocks } from '../actions';
+import { getStocks } from "../actions";
 
 const { Date, Header, Portfolio, Stocks, Trade, Transaction } = Components;
 
