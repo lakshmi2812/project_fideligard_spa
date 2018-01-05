@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const Stocks = () => {
+const Stocks = ({ stock }) => {
   return (
     <div>
-      <div className="card" style={{ width: "20px" }}>
+      <div className="card" style={{ width: '20px' }}>
         <div className="card-block">
           <h4 className="card-title">Stocks</h4>
           <table>
