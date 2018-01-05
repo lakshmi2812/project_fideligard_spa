@@ -1,6 +1,6 @@
-export const GET_STOCKS_REQUEST = "GET_STOCKS_REQUEST";
-export const GET_STOCKS_SUCCESS = "GET_STOCKS_SUCCESS";
-export const GET_STOCKS_FAILURE = "GET_STOCKS_FAILURE";
+export const GET_STOCKS_REQUEST = 'GET_STOCKS_REQUEST';
+export const GET_STOCKS_SUCCESS = 'GET_STOCKS_SUCCESS';
+export const GET_STOCKS_FAILURE = 'GET_STOCKS_FAILURE';
 
 export function getStocksRequest() {
   return {
@@ -30,26 +30,30 @@ export function getStocks() {
     dispatch(getStocksRequest());
 
     //let { search, type } = formData;
-
-    fetch(
-      `https://www.quandl.com/api/v3/datasets/EOD/AAPL.json?api_key=FDLnts4GDctkhE1Picux&start_date=2016-01-01&end_date=2016-12-31`
-    )
-      .then(response => {
-        // If response not okay, throw an error
-        if (!response.ok) {
-          throw new Error(`${response.status} ${response.statusText}`);
-        }
-        // Otherwise, extract the response into json
-        return response.json();
-      })
-      .then(json => {
-        // Dispatch success which sets the Books.
-        console.log(json);
-        //dispatch(getStocksSuccess(json));
-      })
-      .catch(error => {
-        // Dispatch failure which sets the error in state
-        dispatch(getStocksFailure(error));
-      });
+    let stockArray = ['AAPL', 'BA', 'IBM', 'INTC', 'MSFT'];
+    for (let i = 0; i < stockArray.length; i++) {
+      fetch(
+        `https://www.quandl.com/api/v3/datasets/EOD/${
+          stockArray[i]
+        }.json?api_key=${API_KEY}&start_date=2016-01-01&end_date=2016-12-31`
+      )
+        .then(response => {
+          // If response not okay, throw an error
+          if (!response.ok) {
+            throw new Error(`${response.status} ${response.statusText}`);
+          }
+          // Otherwise, extract the response into json
+          return response.json();
+        })
+        .then(json => {
+          // Dispatch success which sets the Books.
+          // console.log(json);
+          dispatch(getStocksSuccess(json));
+        })
+        .catch(error => {
+          // Dispatch failure which sets the error in state
+          dispatch(getStocksFailure(error));
+        });
+    }
   };
 }

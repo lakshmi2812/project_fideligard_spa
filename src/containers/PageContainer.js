@@ -1,13 +1,13 @@
-import { connect } from "react-redux";
-import React, { Component } from "react";
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
   Switch
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import { getStocks } from "../actions";
+import { getStocks } from '../actions';
 
 class PageContainer extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ const mapStateToProps = state => {
   // Pass in all puppies and the value of the current filter
   // to get the correct set of puppies to pass to props
   return {
-    items: state.stocks
+    stocks: state.stocks
   };
 };
 
