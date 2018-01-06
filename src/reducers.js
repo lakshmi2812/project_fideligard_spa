@@ -18,10 +18,12 @@ const initialState = {
 };
 
 export function stocks(state = initialState, action) {
+  console.log("logging state in reducer", state);
   switch (action.type) {
     case GET_STOCKS_REQUEST:
       return { ...state, isFetching: true, error: null };
     case GET_STOCKS_SUCCESS:
+      console.log("logging state in reducer", action.data);
       return {
         ...state,
         stocks: [...state.stocks, action.data],
